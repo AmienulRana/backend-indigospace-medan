@@ -20,5 +20,8 @@
     "mongoose": "^6.0.5",
     "nodemon": "^2.0.12",
     "qrcode": "^1.4.4"
+  },
+  "engines": {
+    "node": "14.15.3"
   }
 }

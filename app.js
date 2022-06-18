@@ -7,6 +7,7 @@ const startUp = require("./routes/startUp");
 const investor = require("./routes/investor");
 const scann = require("./routes/scann");
 const cors = require("cors");
+const PORT = process.env.PORT || 5000;
 app.use(cors());
 
 app.use(express.static("public"));
@@ -24,8 +25,8 @@ app.get("/", (req, res) => {
 
 connectDb()
 .then(() => {
-  app.listen(5000, () => {
-    console.log("server runing in port 5000");
+  app.listen(PORT, () => {
+    console.log("server runing in port", PORT);
   });
   console.log('connection mongodb success')
 }).catch((e) => console.log(e));

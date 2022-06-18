@@ -4,7 +4,7 @@ const index = (req, res, next) => {
     let token = req.headers["authorization"].split(" ")[1];
     if (!token) {
       return res.status(201).json({
-        status: "Error",
+        error:true,
         auth: false,
         message: "No Access Token",
       });
@@ -13,14 +13,14 @@ const index = (req, res, next) => {
       if (err) {
         return res
           .status(201)
-          .json({ status: "error", auth: false, message: "Invalid Token" });
+          .json({ error:true, auth: false, message: "Invalid Token" });
       }
       req.data = decoded;
       next();
     });
   } else {
     return res.status(201).json({
-      status: "Error",
+      error:true,
       auth: false,
       message: "No Access Token",
     });

@@ -3,12 +3,9 @@ const bcrypt = require('bcrypt');
 const middleware = require('../middleware')
 const admin = (app) => {
   const cAdmin = require('../controllers/admin');
-  app.route('/login').post(cAdmin.addPost)
+  app.route('/login').post(cAdmin.login)
 }
 module.exports = admin;
-
-
-
 
 
 // / app.route('/register').get((req,res) => {

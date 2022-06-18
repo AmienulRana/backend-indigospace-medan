@@ -2,7 +2,7 @@ const Admin = require('../models/admin');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 module.exports = {
-  addPost : async (req,res) =>{
+  login : async (req,res) =>{
     try{
       const foundAdmin = await Admin.findOne({
         username:req.body.username
@@ -40,8 +40,5 @@ module.exports = {
 }
 
 function generateAccessToken(data){
-  return jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "72h",
-    algorithm: process.env.JWT_ALGORITHM,
-  })
+  return jwt.sign(data, process.env.ACCESS_TOKEN_SECRET, {expiresIn: "72h"})
 }

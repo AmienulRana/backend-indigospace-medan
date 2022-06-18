@@ -1,7 +1,7 @@
 const Startup = require("../models/startUp");
 const QRCode = require("qrcode");
 module.exports = {
-  getPost: async (req, res) => {
+  getStartup: async (req, res) => {
     const _id_event = req.params.eventId;
     try {
       const startUps = await Startup.find({ _id_event: _id_event });
@@ -16,7 +16,7 @@ module.exports = {
       });
     }
   },
-  getDetailPost: async (req, res) => {
+  DetailStartup: async (req, res) => {
     const { id } = req.params;
     try {
       QRCode.toDataURL(id, async (err, src) => {
@@ -44,7 +44,7 @@ module.exports = {
       });
     }
   },
-  addPost: async (req, res) => {
+  addStartup: async (req, res) => {
     const _id_event = req.params.eventId;
     const startUp = new Startup({ ...req.body, _id_event });
     try {
@@ -60,7 +60,7 @@ module.exports = {
       });
     }
   },
-  deletePost: async (req, res) => {
+  deleteStartup: async (req, res) => {
     const { id } = req.params;
     try {
       await Startup.deleteOne({ _id: id }).then(() => {

@@ -2,7 +2,7 @@ const Event = require("../models/event");
 const StartUp = require("../models/startUp");
 const Investor = require("../models/investor");
 module.exports = {
-  getPost: async (req, res) => {
+  getEvent: async (req, res) => {
     try {
       const dataEvent = await Event.find();
       res.status(200).json({
@@ -32,7 +32,7 @@ module.exports = {
       });
     }
   },
-  getDetailPost: async (req, res) => {
+  DetailEvent: async (req, res) => {
     try {
       const event = await Event.findOne({ _id: req.params.id });
       const startUps = await StartUp.find({ id_event: req.params.id });
@@ -45,7 +45,7 @@ module.exports = {
       console.log(err);
     }
   },
-  deletePost: async (req, res) => {
+  deleteEvent: async (req, res) => {
     const { id } = req.params;
     try {
       await Event.deleteOne({ _id: id }).then(async () => {

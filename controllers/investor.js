@@ -1,7 +1,7 @@
 const Investor = require("../models/investor");
 const QRCode = require("qrcode");
 module.exports = {
-  getPost: async (req, res) => {
+  getInvestor: async (req, res) => {
     const _id_event = req.params.eventId;
     try {
       const investors = await Investor.find({ _id_event: _id_event });
@@ -16,7 +16,7 @@ module.exports = {
       });
     }
   },
-  getDetailPost: async (req, res) => {
+  DetailInvestor: async (req, res) => {
     const { id } = req.params;
     try {
       QRCode.toDataURL(id, async (err, src) => {
@@ -45,7 +45,7 @@ module.exports = {
       });
     }
   },
-  addPost: async (req, res) => {
+  addInvestor: async (req, res) => {
     const _id_event = req.params.eventId;
     const startUp = new Investor({ ...req.body, _id_event });
     try {
@@ -61,7 +61,7 @@ module.exports = {
       });
     }
   },
-  deletePost: async (req, res) => {
+  deleteInvestor: async (req, res) => {
     const { id } = req.params;
     try {
       await Investor.deleteOne({ _id: id }).then(() => {

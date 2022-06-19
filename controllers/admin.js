@@ -1,12 +1,13 @@
 const Admin = require('../models/admin');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { error } = require('../response');
 module.exports = {
   login : async (req,res) =>{
     try{
       const foundAdmin = await Admin.findOne({
         username:req.body.username
-      }).exec();
+      });
       if(foundAdmin){
         const storedPass = foundAdmin.password;
         const payload = {
@@ -22,16 +23,10 @@ module.exports = {
             error:false
           })
         }else{
-          res.status(201).json({
-            message:'username atau password anda salah',
-            error:true
-          })
+          return error(res,'username atau password anda salah');
         }
       }else{
-        res.status(201).json({
-          message:'username anda salah',
-          error:true
-        })
+        return error(res,'username atau password anda salah');
       }
     }catch(err){
       console.log(err);

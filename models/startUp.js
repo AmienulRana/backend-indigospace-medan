@@ -30,6 +30,10 @@ const StartUpSchema = mongoose.Schema({
     type: String,
     default: "-",
   },
+  waktu_hadir: {
+    type:String,
+    default: '-'
+  }
 });
 
 module.exports = mongoose.model("startup", StartUpSchema);

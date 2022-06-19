@@ -26,6 +26,10 @@ const SchemaInvestor = mongoose.Schema({
     type: String,
     default: "-",
   },
+  waktu_hadir: {
+    type:String,
+    default: '-'
+  }
 });
 
 module.exports = mongoose.model("investor", SchemaInvestor);

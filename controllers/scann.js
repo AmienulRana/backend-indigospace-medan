@@ -24,12 +24,12 @@ module.exports = {
       if(startup){
         const eventStartup = await Event.findOne({_id :startup._id_event});
         if(eventStartup.jadwal_event === timeEvent){
-          return updateKeterangan(startup, StartUp, ResizeObserverEntry)
+          return updateKeterangan(startup, StartUp, res)
         }
         else if(eventStartup.jadwal_event < timeEvent || eventInvestor.jadwal_event < timeEvent){
-          return error(res, 'Event ini belum dimulai');
-        }else{
           return error(res, 'Event ini Sudah berakhir');
+        }else{
+          return error(res, 'Event ini belum dimulai');
         }
       }else if(investor){
         const eventInvestor = await Event.findOne({_id :investor._id_event});

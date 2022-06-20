@@ -14,14 +14,19 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+
+app.get("/", (req, res) => {
+  res.json({
+    error:false,
+    message:'Welcome to Server indigospace'
+  }).status(200);
+});
 admin(app);
 event(app);
 startUp(app);
 investor(app);
 scann(app);
-app.get("/", (req, res) => {
-  res.render("index");
-});
+
 
 connectDb()
 .then(() => {
